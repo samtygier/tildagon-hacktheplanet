@@ -2,6 +2,7 @@
 # Distributed as LGPL-3.0-only
 
 import app
+from math import sin
 
 from events.input import Buttons, BUTTON_TYPES
 
@@ -25,11 +26,12 @@ class ExampleApp(app.App):
     def draw(self, ctx):
         ctx.save()
         ctx.rgb(0.0,0,0).rectangle(-120,-120,240,240).fill()
+        z_off = 0.2 * sin(self.counter / 16)
         for i in range(16):
             z = (self.counter - 16*i) / 256.0
             s = 1 if (i%2 == 0) else -1
             if z > 0.01:
-                lines = self.make_gibson_console(ctx, z, s)
+                lines = self.make_gibson_console(ctx, z, s, z_off)
                 if i == 8 and (self.counter & 4):
                     garbage = len(lines) - 5
                 else:
@@ -40,12 +42,12 @@ class ExampleApp(app.App):
             ctx.rgb(1,0,0).move_to(-100,50).text("Hack the planet")
         ctx.restore()
 
-    def make_gibson_console(self, ctx, z, s):
+    def make_gibson_console(self, ctx, z, s, z_off):
         zb = z - (1/64)
-        center_front = (8.0 * s * (z**2+0.01), 0)
+        center_front = (8.0 * s * (z**2+0.01)+z_off, 0)
         size_front = (0.5*z, 1.0*z)
 
-        center_back = (8.0 * s * (zb**2+0.01), 0)
+        center_back = (8.0 * s * (zb**2+0.01)+z_off, 0)
         size_back = (0.5*zb, 1.0*zb)
         return self.make_cube(center_front, size_front, center_back, size_back)
 
