@@ -2,7 +2,7 @@
 # Distributed as LGPL-3.0-only
 
 import app
-from math import sin
+import imu
 
 from events.input import Buttons, BUTTON_TYPES
 
@@ -26,7 +26,7 @@ class ExampleApp(app.App):
     def draw(self, ctx):
         ctx.save()
         ctx.rgb(0.0,0,0).rectangle(-120,-120,240,240).fill()
-        z_off = 0.2 * sin(self.counter / 16)
+        z_off = imu.acc_read()[1] / 10
         for i in range(16):
             z = (self.counter - 16*i) / 256.0
             s = 1 if (i%2 == 0) else -1
