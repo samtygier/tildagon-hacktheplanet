@@ -22,7 +22,7 @@ category = "Badge"
 
 [metadata]
 # Your nickname.  Must be at most 32 characters!
-author = "hughrawlinson"
+author = "Sam Tygier"
 
 # License of your app as an SPDX identifier: <https://spdx.org/licenses/>
 license = "LGPL-3.0-only"
@@ -31,10 +31,10 @@ license = "LGPL-3.0-only"
 url = "https://www.github.com/samtygier/tildagon-hacktheplanet"
 
 # Description of your app.  Maximum 140 characters!
-description = "Hack the Planet by Sam Tygier"
+description = "Hack the Planet"
 
 # Version number of your app.  If you push a commit where this number is
 # increased, we interpret this as a new version being released.
 #
 # Version number must be an integer!
-version = "0.0.1"
+version = "0.0.2"
