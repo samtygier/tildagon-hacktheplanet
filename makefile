@@ -6,9 +6,10 @@ test:
 	mpremote mkdir :/apps/${APP_DIR}
 	mpremote cp app.py :/apps/${APP_DIR}/app.py
 	mpremote cp metadata.json :/apps/${APP_DIR}/metadata.json
+	make reset
 
+reset:
 	mpremote reset
-
 
 list:
 	mpremote fs ls :/apps
